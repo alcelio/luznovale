@@ -34,7 +34,7 @@ import br.com.luznovale.service.MemberRegistration;
 @Model
 public class MemberController {
 
-    @Inject
+    @Inject @Named("produceFacesContext")
     private FacesContext facesContext;
 
     @Inject

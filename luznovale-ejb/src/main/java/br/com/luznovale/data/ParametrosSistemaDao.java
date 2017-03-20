@@ -15,7 +15,6 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.luznovale.exception.DatabaseException;
 import br.com.luznovale.logger.ALogger;
-import br.com.luznovale.model.Objeto;
 import br.com.luznovale.model.ParametrosSistema;
 import br.com.luznovale.util.CriaCriteria;
 
