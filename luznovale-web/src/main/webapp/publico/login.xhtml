@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" template="/templates/basico.xhtml">
+
+
+	<h1>Login</h1>
+
+
+	<ui:define name="tarefas">
+		<h:head>
+			<h:outputStylesheet library="css" name="styles.css" />
+		</h:head>
+		<h:body>
+
+			<p:panel header="Login"
+				style="width:400px; margin-left:auto; margin-right:auto;">
+
+				<p:growl id="messages" />
+
+				<form action="j_security_check" method="post" id="login">
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputLabel for="j_username" value="Usuário: " />
+						<h:inputText id="j_username" required="true" />
+						<h:outputLabel for="j_password" value="Senha: " />
+						<h:inputSecret id="j_password" required="true" />
+						<h:outputLabel />
+						<h:commandButton value="ACESSAR" />
+					</h:panelGrid>
+				</form>
+
+			</p:panel>
+
+		</h:body>
+
+	</ui:define>
+
+</ui:composition>
+
+<!-- <div id="conteudo" title="Redefinição de Senhas."> -->
+<!-- 			<h:form> -->
+<!-- 				<p:growl id="msg" rendered="#{param.erro}">#{msgs.erro_message}</p:growl> -->
+<!-- 			</h:form> -->
+
+<!-- 			<p:dialog header="Redefine Senha" id="dialog" modal="true" -->
+<!-- 				minWidth="500" width="500" height="250" closable="false" -->
+<!-- 				position="center" widgetVar="modalDisciplina" showEffect="slide" -->
+<!-- 				draggable="false" resizable="false" visible="true"> -->
+
+<!-- 				<h:form> -->
+<!-- 				<br /> <h2 align="center"> Olá! <h:outputLabel value="#{mbUsuarioController.usuario.desNomePessoa}" /> </h2><br /> -->
+<!-- 				<h2 align="center"> Você precisa definir a sua senha de acesso. </h2><br /> -->
+
+<!-- 				</h:form> -->
+
+
+<!-- 				<h:form prependId="false" id="formDisciplina" > -->
+<!-- 					<p:growl id="msg0" /> -->
+<!-- 					<h:panelGrid columns="2" cellpadding="20" cellspacing="10" -->
+<!-- 						styleClass="panelGrid" id="grid0"> -->
+
+
+<!-- 						<h:outputLabel for="senha" value="Senha.:" style="float:right"/> -->
+<!-- 						<p:password id="senha" size="20" maxlength="22" -->
+<!-- 							promptLabel="Digite sua Senha" -->
+<!-- 							value="#{mbUsuarioController.confirmaSenha}" weakLabel="Senha Fraca" -->
+<!-- 							goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true" -->
+<!-- 							required="true" requiredMessage="O campo [Senha] é obrigatório" /> -->
+
+<!-- 						<h:outputLabel for="senhaconf2" value="Confirmar Senha:" /> -->
+<!-- 						<p:password id="senhaconf2" size="20" -->
+<!-- 							value="#{mbUsuarioController.usuario.senha}" maxlength="22" -->
+<!-- 							promptLabel="Confirme sua Senha" required="true" -->
+<!-- 							requiredMessage="O campo [Confirma Senha] é obrigatório"> -->
+<!-- 						</p:password> -->
+
+<!-- 						<h:outputLabel  />							 -->
+<!-- 							<p:commandButton value="Salvar" style="float:right" -->
+<!-- 								action="#{mbUsuarioController.atualizaSenha()}" -->
+<!-- 								icon="ui-icon-disk" update="@form" > -->
+<!-- 							</p:commandButton> -->
+
+<!-- 					</h:panelGrid> -->
+<!-- 				</h:form> -->
+
+<!-- 			</p:dialog> -->
+<!-- 		</div> -->
+
+
+
+
+<!-- 	<ui:define name="tarefas"> -->
+<!-- 		<h:head> -->
+
+<!-- 			<h:outputStylesheet library="css" name="styles.css" /> -->
+
+<!-- 		</h:head> -->
+<!-- 		<h:body> -->
+
+
+
+<!-- 				<p:panel header="Login" -->
+<!-- 					style="width:400px; margin-left:auto; margin-right:auto;"> -->
+
+<!-- 					<p:growl id="messages" /> -->
+
+<!-- 					 <form action="j_security_check" method="post" id="login"> -->
+<!--                     <h:panelGrid columns="2" cellpadding="3"> -->
+<!--                         <h:outputLabel for="j_username" value="Usuário: " />  -->
+<!--                         <h:inputText id="j_username" required="true"/> -->
+<!--                         <h:outputLabel for="j_password" value="Senha: " /> -->
+<!--                         <h:inputSecret id="j_password" required="true" /> -->
+<!--                         <h:outputLabel /> -->
+<!--                         <h:commandButton value="ACESSAR"/> -->
+<!--                     </h:panelGrid> -->
+<!--                 </form> -->
+
+<!-- 				</p:panel> -->
+
+<!-- 		</h:body> -->
+
+<!-- 	</ui:define> -->
+
+
+

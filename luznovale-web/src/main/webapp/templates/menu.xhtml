@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<ui:composition>
+	<div id="menu">
+		<h:form>
+			<p:menubar styleClass="labelmenu">
+
+				
+				<p:submenu label="Manutenção" rendered="#{mbLoginController.admin}">
+					<p:menuitem value="Gerenciar Usuários"
+						url="/admin/manutencaoUsuario.jsf" ajax="false" />
+					<p:menuitem value="Cidades" url="/admin/manutencaoCidade.jsf"
+						ajax="false" />
+					<p:menuitem value="Estados" url="/admin/manutencaoEstado.jsf"
+						ajax="false" />
+					<p:menuitem value="Logradouros"
+						url="/admin/manutencaoLogradouro.jsf" ajax="false" />
+					<p:menuitem value="Funções" url="/admin/manutencaoFuncao.jsf"
+						ajax="false" />
+					<p:menuitem value="Drogas" url="/admin/manutencaoDroga.jsf"
+						ajax="false" />
+					<p:menuitem value="Instituição"
+						url="/admin/manutencaoInstituicao.jsf" ajax="false" />
+					<p:menuitem value="Objetos"
+						url="#{bbGlobal.PAGINA_MANUTENCAO_OBJETOS}" ajax="false" />
+				</p:submenu>
+
+
+				<p:submenu label="Parâmetros" rendered="#{mbLoginController.admin}">
+					<p:menuitem value="Cadastrar Parâmetro"
+						url="#{bbGlobal.PAGINA_MANUTENCAO_PARAMETROS}" ajax="false" />
+					<p:menuitem value="Cadastrar Parâmetros do Sistema"
+						url="#{bbGlobal.PAGINA_MANUTENCAO_PARAMETROS_SISTEMA}" ajax="false" />
+					<p:menuitem value="Cadastrar Parâmetros do Usuário"
+						url="#{bbGlobal.PAGINA_MANUTENCAO_PARAMETROS_USUARIO}" ajax="false" />
+				</p:submenu>
+
+
+
+				<p:submenu label="Internação"
+					rendered="#{mbLoginController.usuario}">
+					<p:menuitem value="Registrar Entrada"
+						url="#{bbGlobal.PAGINA_REGISTRAR_INTERNACAO}" />
+					<p:menuitem value="Registrar Saída"
+						url="/professor/pesquisaquestao.jsf" />
+				</p:submenu>
+
+
+				<p:submenu label="Interno" rendered="#{mbLoginController.usuario}">
+					<p:menuitem value="Objetos/Propriedades"
+						url="/professor/criaravaliacao.jsf" />
+					<p:menuitem value="Contribuições"
+						url="/professor/correcaoavaliacao.jsf" />
+					<p:menuitem value="Medicação" url="/professor/cadastroturma.jsf" />
+					<p:submenu label="Observações Médicas">
+						<p:menuitem value="Parecer Psicológico"
+							url="/aluno/entrarturma.jsf" />
+						<p:menuitem value="Parecer Social" url="/aluno/entrarturma.jsf" />
+					</p:submenu>
+				</p:submenu>
+
+
+
+				<p:submenu label="Relatórios"
+					rendered="#{mbLoginController.usuario}">
+					<p:menuitem value="Lista de Internos"
+						url="/aluno/responderavaliacao.jsf" />
+					<p:menuitem value="Função dos Internos"
+						url="/aluno/estatisticasaluno.jsf" />
+				</p:submenu>
+
+
+				<p:submenu label="Testes">
+					<p:menuitem value="Pesquisa Internos"
+						url="#{bbGlobal.PAGINA_PESQUISA_INTERNOS}" ajax="false" />
+					<p:menuitem value="Pesquisa Drogas"
+						url="#{bbGlobal.PAGINA_PESQUISA_DROGAS}" ajax="false" />
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+	</div>
+
+
+</ui:composition>
+
+</html>

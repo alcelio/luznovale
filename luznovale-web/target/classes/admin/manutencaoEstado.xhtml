@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="tarefas">
+		<p:fieldset legend="Manutenção de Codades">
+			<br />
+			<p:tabView id="tbv1" dynamic="true" cache="true">
+				<p:tab title="Área de Inserção/Edição">
+					<h:form prependId="false" id="formEstado">
+						<p:growl id="msg0" />
+						<h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid"
+							id="grid0">
+
+							<h:outputLabel />
+							<h:inputHidden id="idestado"
+								value="#{mbEstadoController.estado.idEstado}" />
+							<h:panelGrid>
+								<h:outputLabel for="nomeestado" value="Estado:" />
+								<p:inputText id="nomeestado" size="40"
+									value="#{mbEstadoController.estado.desEstado}"
+									onkeyup="this.value = this.value.toUpperCase()" required="true"
+									requiredMessage="O campo [Estado] é obrigatório." />
+							</h:panelGrid>
+
+							<h:panelGrid>
+								<h:outputLabel for="desUF" value="UF:" />
+								<p:inputText id="desUF" size="2"
+									value="#{mbEstadoController.estado.desUF}"
+									onkeyup="this.value = this.value.toUpperCase()" required="true"
+									requiredMessage="O campo [UF] é obrigatório." />
+							</h:panelGrid>
+
+							<p:panel>
+								<p:commandButton value="Salvar"
+									action="#{mbEstadoController.salvar()}" icon="ui-icon-disk"
+									update="@form :formtable" />
+								<p:commandButton value="Voltar" immediate="true"
+									action="#{mbEstadoController.goBack()}"
+									icon="ui-icon ui-icon-close" update="@all" />
+							</p:panel>
+						</h:panelGrid>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+
+			<h:form id="formtable">
+				<p:growl id="msg1" />
+				<p:dataTable id="idTabela" var="estado"
+					value="#{mbEstadoController.listaDeEstados()}" paginator="true"
+					rows="10" emptyMessage="Nenhum registro encontrado"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<f:facet name="header">Lista de Estados</f:facet>
+					
+										<p:column width="50">
+                        <f:facet name="header">
+                            <h:outputText value="Código"/>
+                        </f:facet >
+                        	<div align="center">
+                        	<h:outputText value="#{estado.idEstado}"/>
+                        	</div>
+                    </p:column>
+
+
+					<p:column width="400">
+						<f:facet name="header">
+							<h:outputText value="Estado" />
+						</f:facet>
+						<h:outputText value="#{estado.desEstado}" />
+					</p:column>
+
+					<p:column width="20">
+						<f:facet name="header">
+							<h:outputText value="UF" />
+						</f:facet>
+						<h:outputText value="#{estado.desUF}" />
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink process="@this" update=":tbv1:formEstado">
+								<p:graphicImage library="imagens" name="edit.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbEstadoController.estado}" value="#{estado}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink action="#{mbEstadoController.removeEstado()}"
+								onclick="if (!confirm('Confirma a exclusão do estado #{estado.desEstado}?')) return false;"
+								update="@form">
+								<p:graphicImage library="imagens" name="trash.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbEstadoController.estado}" value="#{estado}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</p:fieldset>
+	</ui:define>
+
+</ui:composition>

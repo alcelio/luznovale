@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="tarefas">
+		<p:fieldset legend="Gerenciamento de Instituições">
+			<br />
+			<p:tabView id="tbv1" dynamic="true" cache="true">
+				<p:tab title="Área de Inserção/Edição">
+					<h:form prependId="false" id="formInstituicao">
+						<p:growl id="msg0" />
+						<h:panelGrid columns="2" id="grid0">
+
+							<h:inputHidden id="idinstituicao"
+								value="#{mbInstituicaoController.instituicao.idInstituicao}" />
+							<h:outputLabel />
+
+							<h:panelGrid columns="2" cellpadding="10" cellspacing="10">
+
+
+								<h:outputLabel for="nomeinstituicao" value="Nome Institução:"
+									style="float: right;" />
+								<p:inputText id="nomeinstituicao" size="55"
+									value="#{mbInstituicaoController.instituicao.desNomeInstituicao}"
+									onkeyup="this.value = this.value.toUpperCase()" required="true"
+									requiredMessage="O campo [Nome Completo] é obrigatório." />
+
+								<h:outputLabel for="fone01" value="Telefone:"
+									style="float: right;" />
+								<p:inputMask id="fone1" size="16" mask="(99) 99999-9999"
+									value="#{mbInstituicaoController.instituicao.desFone1}"
+									required="true"
+									requiredMessage="O campo [Telefone] é obrigatório"
+									onkeyup="this.value = this.value.toUpperCase()" />
+
+								<h:outputLabel for="fone02" value="Telefone:"
+									style="float: right;" />
+								<p:inputMask id="fone2" size="16" mask="(99) 99999-9999"
+									value="#{mbInstituicaoController.instituicao.desFOne2}"
+									required="false"
+									requiredMessage="O campo [Telefone] é obrigatório"
+									onkeyup="this.value = this.value.toUpperCase()" />
+
+
+								<h:outputLabel for="responsavel" value="Pessoa Contato:"
+									style="float: right;" />
+								<p:inputText id="resposnsavel" size="55"
+									value="#{mbInstituicaoController.instituicao.desNomeContato}"
+									onkeyup="this.value = this.value.toUpperCase()" required="true"
+									requiredMessage="O campo [Responsável] é obrigatório." />
+
+								<h:outputLabel for="email" value="E-mail:" style="float: right;" />
+								<p:inputText id="email" size="55"
+									value="#{mbInstituicaoController.instituicao.desEmail}"
+									required="true"
+									requiredMessage="O campo [E-mail] é obrigatório">
+									<f:validator validatorId="emailValidator" />
+								</p:inputText>
+
+								<h:outputLabel for="obs" value="Observação:"
+									style="float: right;" />
+								<p:inputTextarea id="obs" cols="55" rows="4"
+									value="#{mbInstituicaoController.instituicao.desObs}" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellpadding="10" cellspacing="10">
+								<h:outputLabel for="logradouro" value="Logradouro:"
+									style="float: right;" />
+
+								<h:panelGrid columns="2">
+									<p:selectOneMenu id="logradouro" style="width:435px"
+										value="#{mbInstituicaoController.instituicao.endereco.logradouro.idLogradouro}"
+										converterMessage="Selecione um [Logradouro] para prosseguir.">
+										<f:selectItem itemLabel="Selecione um logradouro"
+											itemValue="null" />
+										<f:selectItems
+											value="#{mbLogradouroController.listaDeLogradouros()}"
+											var="logradouro" itemValue="#{logradouro.idLogradouro}"
+											itemLabel="#{logradouro.desLogradouro}" />
+									</p:selectOneMenu>
+
+									<p:commandButton id="adicionarLogradouro" value="+"
+										style="float:right" immediate="true"
+										action="manutencaoLogradouro.jsf" update="@all">
+										<p:ajax
+											listener="#{mbLogradouroController.setaCaminhoOrigem(bbGlobal.PAGINA_MANUTENCAO_INSTITUICAO)}" />
+									</p:commandButton>
+
+								</h:panelGrid>
+
+								<h:outputLabel for="endereco" value="Endereço:"
+									style="float: right;" />
+								<p:inputText id="login"
+									onkeyup="this.value = this.value.toUpperCase()"
+									value="#{mbInstituicaoController.instituicao.endereco.desEndereco}"
+									size="55" required="true"
+									requiredMessage="O campo [Endereço] é obrigatório">
+								</p:inputText>
+
+								<h:outputLabel for="numero" value="Número" style="float: right;" />
+								<p:inputText id="numero"
+									value="#{mbInstituicaoController.instituicao.endereco.numNumero}"
+									size="20" required="true"
+									requiredMessage="O campo [Número] é obrigatório">
+								</p:inputText>
+
+
+								<h:outputLabel for="bairro" value="Bairro:"
+									style="float: right;" />
+								<p:inputText id="bairro"
+									onkeyup="this.value = this.value.toUpperCase()"
+									value="#{mbInstituicaoController.instituicao.endereco.desBairro}"
+									size="55" required="true"
+									requiredMessage="O campo [Bairro] é obrigatório">
+								</p:inputText>
+
+								<h:outputLabel for="cidade" value="Cidade:"
+									style="float: right;" />
+								<h:panelGrid columns="2">
+									<p:selectOneMenu id="cidade" style="width:435px"
+										value="#{mbInstituicaoController.instituicao.endereco.cidade.idCidade}"
+										converterMessage="Selecione uma [Cidade] para prosseguir">
+										<f:selectItem itemLabel="Selecione uma Cidade"
+											itemValue="null" />
+										<f:selectItems value="#{mbCidadeController.listaDeCidades()}"
+											var="cidade" itemValue="#{cidade.idCidade}"
+											itemLabel="#{cidade.desNomeCidade}" />
+									</p:selectOneMenu>
+
+									<p:commandButton id="adicionarCidade" value="+"
+										style="float:right" immediate="true"
+										action="manutencaoCidade.jsf" update="@all">
+										<p:ajax
+											listener="#{mbCidadeController.setaCaminhoOrigem(bbGlobal.PAGINA_MANUTENCAO_INSTITUICAO)}" />
+									</p:commandButton>
+								</h:panelGrid>
+								<h:outputLabel for="estado" value="Estado" style="float: right;" />
+
+								<h:panelGrid columns="2">
+									<p:selectOneMenu id="estado" style="width:435px"
+										value="#{mbInstituicaoController.instituicao.endereco.estado.idEstado}"
+										converterMessage="Selecione um [Estado] para prosseguir">
+										<f:selectItem itemLabel="Selecione um Estado" itemValue="null" />
+										<f:selectItems value="#{mbEstadoController.listaDeEstados()}"
+											var="estado" itemValue="#{estado.idEstado}"
+											itemLabel="#{estado.desEstado}" />
+									</p:selectOneMenu>
+
+									<p:commandButton id="adicionarEstado" value="+"
+										style="float:right" immediate="true"
+										action="manutencaoEstado.jsf" update="@all">
+										<p:ajax
+											listener="#{mbEstadoController.setaCaminhoOrigem(bbGlobal.PAGINA_MANUTENCAO_INSTITUICAO)}" />
+									</p:commandButton>
+
+								</h:panelGrid>
+
+								<h:inputHidden id="idEndereco"
+									value="#{mbInstituicaoController.instituicao.endereco.idEndereco}" />
+
+								<h:panelGrid columns="2" style="float: right; ">
+									<p:commandButton value="Salvar"
+										style="float: right; margin-top:10;"
+										action="#{mbInstituicaoController.salvar()}"
+										icon="ui-icon-disk" update="@form :formtable" />
+
+									<p:commandButton value="Encerrar" immediate="true"
+										style="float: right;  margin-top:10;"
+										action="#{mbInstituicaoController.goBack()}"
+										icon="ui-icon ui-icon-close" update="@all" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</h:panelGrid>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+
+			<h:form id="formtable">
+				<p:growl id="msg1" />
+				<p:dataTable id="idTabela" var="instituicao"
+					value="#{mbInstituicaoController.listaDeInstituicao()}"
+					paginator="true" rows="5" emptyMessage="Nenhum registro encontrado"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<f:facet name="header">Lista de Instituições</f:facet>
+
+
+					<p:column width="400">
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{instituicao.desNomeInstituicao}" />
+					</p:column>
+
+					<p:column width="130">
+						<f:facet name="header">
+							<h:outputText value="Telefone 1" />
+						</f:facet>
+						<h:outputText value="#{instituicao.desFone1}" />
+					</p:column>
+
+					<p:column width="130">
+						<f:facet name="header">
+							<h:outputText value="Telefone 2" />
+						</f:facet>
+						<h:outputText value="#{instituicao.desFOne2}" />
+					</p:column>
+
+
+					<p:column width="130">
+						<f:facet name="header">
+							<h:outputText value="Nome Contato" />
+						</f:facet>
+						<h:outputText value="#{instituicao.desNomeContato}" />
+					</p:column>
+
+					<!--                     <p:column width="55"> -->
+					<!--                         <f:facet name="header"> -->
+					<!--                             <h:outputText value="Super"/> -->
+					<!--                         </f:facet> -->
+					<!--                         <div align="center" > -->
+					<!--                         	<h:graphicImage library="imagens" name="img_#{instituicao.isSuperUser}.png" /> -->
+					<!--                         </div> -->
+					<!--                     </p:column>                    -->
+
+					<!--                     <p:column width="55"> -->
+					<!--                         <f:facet name="header"> -->
+					<!--                             <h:outputText value="Admin"/> -->
+					<!--                         </f:facet> -->
+					<!--                         <div align="center" > -->
+					<!--                         	<h:graphicImage library="imagens" name="img_#{instituicao.isAdminUser}.png" /> -->
+					<!--                         </div> -->
+					<!--                     </p:column>                    -->
+
+					<!--                     <p:column width="55"> -->
+					<!--                         <f:facet name="header"> -->
+					<!--                             <h:outputText value="Usuário"/> -->
+					<!--                         </f:facet> -->
+					<!--                         <div align="center" > -->
+					<!--                         	<h:graphicImage library="imagens" name="img_#{instituicao.isUser}.png" /> -->
+					<!--                         </div> -->
+					<!--                     </p:column>                    -->
+
+					<!--                     <p:column width="200"> -->
+					<!--                         <f:facet name="header"> -->
+					<!--                             <h:outputText value="Função"/> -->
+					<!--                         </f:facet> -->
+					<!--                         	<h:outputText value="#{instituicao.funcao.desFuncao}"/> -->
+					<!--                     </p:column> -->
+
+
+					<p:column width="55">
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink process="@this" update=":tbv1:formInstituicao">
+								<p:graphicImage library="imagens" name="edit.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbInstituicaoController.instituicao}"
+									value="#{instituicao}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+					<p:column width="55">
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink
+								action="#{mbInstituicaoController.removeInstituicao()}"
+								onclick="if (!confirm('Confirma a exclusão do usuário #{instituicao.desNomeInstituicao}?')) return false;"
+								update="@form">
+								<p:graphicImage library="imagens" name="trash.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbInstituicaoController.instituicao}"
+									value="#{instituicao}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</p:fieldset>
+	</ui:define>
+
+</ui:composition>

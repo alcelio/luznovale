@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="tarefas">
+		<p:fieldset legend="Gerenciamento de Usuários">
+			<br />
+			<p:tabView id="tbv1" dynamic="true" cache="true">
+				<p:tab title="Área de Inserção/Edição">
+					<h:form prependId="false" id="formUsuario">
+						<p:growl id="msg0" />
+						<h:panelGrid columns="3" cellpadding="10" styleClass="panelGrid"
+							id="grid0">
+
+							<h:inputHidden id="senha"
+								value="#{mbUsuarioController.usuario.senha}" />
+							<h:inputHidden id="idusuario"
+								value="#{mbUsuarioController.usuario.idPessoa}" />
+							<h:inputHidden id="isAtivo"
+								value="#{mbUsuarioController.usuario.isAtivo}" />
+
+							<h:outputLabel for="nomeusuario" value="Nome Completo:" />
+							<p:inputText id="nomeusuario" size="50"
+								value="#{mbUsuarioController.usuario.desNomePessoa}"
+								onkeyup="this.value = this.value.toUpperCase()" required="true"
+								requiredMessage="O campo [Nome Completo] é obrigatório." />
+							<p:messages for="nomeusuario" />
+
+							<h:outputLabel for="login" value="Login:" />
+							<p:inputText id="login"
+								value="#{mbUsuarioController.usuario.login}" size="20"
+								required="true" requiredMessage="O campo [Login] é obrigatório">
+							</p:inputText>
+							<p:messages for="login" />
+
+							<h:outputLabel for="dataNascimento" value="Data de Nasc:" />
+							<p:calendar id="dataNascimento" yearRange="-70:-12"
+								value="#{mbUsuarioController.usuario.dtaNascimento}"
+								required="true"
+								requiredMessage="O campo [Data de Nascimento] é obrigatório"
+								locale="pt_BR" navigator="true" effect="explode"
+								pattern="dd/MM/yyyy" />
+							<p:messages for="dataNascimento" />
+
+							<h:outputLabel for="funcao" value="Função:" />
+
+							<h:panelGrid columns="2">
+								<p:selectOneMenu id="funcao" style="width:405px"
+									value="#{mbUsuarioController.usuario.funcao.idFuncao}">
+									<f:selectItem itemLabel="Selecione uma Função" itemValue="" />
+									<f:selectItems value="#{bbFuncoes.listarTodasFuncoes()}"
+										var="funcao" itemValue="#{funcao.idFuncao}"
+										itemLabel="#{funcao.desFuncao}" />
+								</p:selectOneMenu>
+
+								<p:commandButton id="adicionarFuncao" value="+"
+									style="float:right" immediate="true"
+									action="manutencaoFuncao.jsf" update="@all">
+									<p:ajax
+										listener="#{mbFuncaoController.setaCaminhoOrigem(bbGlobal.PAGINA_MANUTENCAO_USUARIO)}" />
+								</p:commandButton>
+
+							</h:panelGrid>
+							<p:messages for="funcao" />
+
+							<h:outputLabel for="sexo" value="Sexo:" />
+							<p:selectOneMenu id="sexo" style="width: 80px;"
+								value="#{mbUsuarioController.usuario.sexo.idSexo}">
+								<f:selectItem itemLabel="Selecione" itemValue="null" />
+								<f:selectItems value="#{bbSexo.sexos}" var="sexo"
+									itemValue="#{sexo.idSexo}" itemLabel="#{sexo.dsSexo}"
+									size="15px" />
+							</p:selectOneMenu>
+							<p:messages for="sexo" />
+
+							<h:outputLabel for="adminUser" value="Adminitrador" />
+							<p:selectBooleanCheckbox
+								value="#{mbUsuarioController.usuario.isAdminUser}" />
+							<p:messages for="adminUser" />
+
+							<h:outputLabel for="user" value="Usuário" />
+							<p:selectBooleanCheckbox
+								value="#{mbUsuarioController.usuario.isUser}" />
+							<p:messages for="user" />
+								<h:outputLabel value="" />
+
+							<p:panel>
+								<p:commandButton value="Salvar"
+									action="#{mbUsuarioController.salvar()}" icon="ui-icon-disk"
+									update="@form :formtable" />
+
+								<p:commandButton value="Voltar" immediate="true"
+									action="#{mbUsuarioController.goBack()}"
+									icon="ui-icon ui-icon-close" update="@all" />
+							</p:panel>
+						</h:panelGrid>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+
+			<h:form id="formtable">
+				<p:growl id="msg1" />
+				<p:dataTable id="idTabela" var="usuario"
+					value="#{mbUsuarioController.listaDeUsuarios()}" paginator="true"
+					rows="10" emptyMessage="Nenhum registro encontrado"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<f:facet name="header">Lista de Usuarios</f:facet>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Ativo" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink action="#{mbUsuarioController.ativar()}"
+								update="@form">
+								<h:graphicImage library="imagens"
+									name="user_#{usuario.isAtivo}.png" />
+								<p:ajax update="@this" />
+								<f:setPropertyActionListener
+									target="#{mbUsuarioController.usuario}" value="#{usuario}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+
+					<p:column width="400">
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{usuario.desNomePessoa}" />
+					</p:column>
+
+					<p:column width="130">
+						<f:facet name="header">
+							<h:outputText value="Login" />
+						</f:facet>
+						<h:outputText value="#{usuario.login}" />
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Super" />
+						</f:facet>
+						<div align="center">
+							<h:graphicImage library="imagens"
+								name="img_#{usuario.isSuperUser}.png" />
+						</div>
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Admin" />
+						</f:facet>
+						<div align="center">
+							<h:graphicImage library="imagens"
+								name="img_#{usuario.isAdminUser}.png" />
+						</div>
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Usuário" />
+						</f:facet>
+						<div align="center">
+							<h:graphicImage library="imagens"
+								name="img_#{usuario.isUser}.png" />
+						</div>
+					</p:column>
+
+					<p:column width="200">
+						<f:facet name="header">
+							<h:outputText value="Função" />
+						</f:facet>
+						<h:outputText value="#{usuario.funcao.desFuncao}" />
+					</p:column>
+
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink process="@this" update=":tbv1:formUsuario">
+								<p:graphicImage library="imagens" name="edit.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbUsuarioController.usuario}" value="#{usuario}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink action="#{mbUsuarioController.removeUsuario()}"
+								onclick="if (!confirm('Confirma a exclusão do usuário #{usuario.desNomePessoa}?')) return false;"
+								update="@form">
+								<p:graphicImage library="imagens" name="trash.png"
+									style="border:0" />
+								<f:setPropertyActionListener
+									target="#{mbUsuarioController.usuario}" value="#{usuario}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</p:fieldset>
+	</ui:define>
+
+</ui:composition>

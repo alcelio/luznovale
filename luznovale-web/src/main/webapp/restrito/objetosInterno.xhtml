@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="tarefas">
+		<p:fieldset legend="Cadastro de Objetos">
+			<br />
+			<p:tabView id="tbv1" dynamic="true" cache="true">
+				<p:tab title="Área de Inserção/Edição">
+					<h:form prependId="false" id="formObjetos">
+						<p:growl id="msg0" />
+						<h:panelGrid columns="3" cellpadding="10" styleClass="panelGrid"
+							id="grid0">
+
+							<h:inputHidden id="idobjeto"
+								value="#{mbObjetosController.objeto.idObjeto}" />
+
+							<h:outputLabel for="nomeobjeto" value="Nome:" />
+							<p:inputText id="nomeobjeto" size="50"
+								value="#{mbObjetosController.objeto.desObjeto}"
+								onkeyup="this.value = this.value.toUpperCase()" required="true"
+								requiredMessage="O campo [Nome] é obrigatório." />
+							<p:messages for="nomeobjeto" />
+							<h:outputLabel />
+
+							<p:panel>
+								<p:commandButton value="Salvar"
+									action="#{mbObjetosController.salvar()}" icon="ui-icon-disk"
+									update="@form :formtable" />
+
+								<p:commandButton value="Voltar" immediate="true"
+									action="#{mbObjetosController.goBack()}"
+									icon="ui-icon ui-icon-close" update="@all" />
+							</p:panel>
+
+						</h:panelGrid>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+
+			<h:form id="formtable">
+				<p:growl id="msg1" />
+				<p:dataTable id="idTabela" var="objeto" widgetVar="objetosTable"
+					filteredValue="#{dtFilterInterno.internosFiltrados}"
+					value="#{mbObjetosController.listaDeObjetos()}" paginator="true"
+					rows="10" emptyMessage="Nenhum registro encontrado"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+
+
+					<f:facet name="header">Lista de Objetos</f:facet>
+
+					<p:column width="50">
+						<f:facet name="header">
+							<h:outputText value="Código" />
+						</f:facet>
+						<div align="center">
+							<h:outputText value="#{objeto.idObjeto}" />
+						</div>
+					</p:column>
+
+
+					<p:column width="400" filterBy="#{objeto.desObjeto}"
+						filterStyle="width:500px" headerText="Busca objeto por Descrição"
+						footerText="Descrição do objeto" filterMatchMode="contains"
+						style="width:330px; ">
+						<h:outputText value="#{objeto.desObjeto}" />
+					</p:column>
+
+
+
+					<p:column width="40"
+						visible="#{mbObjetosController.adicionandoObejtos}">
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink process="@this" update="@this">
+								<p:graphicImage library="imagens" name="edit.png"
+									style="border:0" title="Edita informações do obejeto." />
+
+							</p:commandLink>
+						</div>
+					</p:column>
+
+					<p:column width="40"
+						visible="#{mbObjetosController.adicionandoObejtos}">
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<div align="center">
+							<p:commandLink action="#{mbObjetosController.removeobjeto()}"
+								onclick="if (!confirm('Confirma a exclusão do objeto #{objeto.desObjeto}?')) return false;"
+								update="@form">
+								<p:graphicImage library="imagens" name="trash.png"
+									style="border:0" title="Exclui objeto selecionado." />
+								<f:setPropertyActionListener
+									target="#{mbObjetosController.objeto}" value="#{objeto}" />
+							</p:commandLink>
+						</div>
+					</p:column>
+
+					<p:column style="width:45px;text-align: center"
+						headerText="Adicionar"
+						visible="#{mbObjetosController.adicionandoObejtos}">
+						<p:commandLink icon="ui-icon-add"
+							onclick="PF('dlg').show();"
+							title="Adicina Objeto na lista do interno.">
+							<p:graphicImage library="imagens" name="add.png" width="30px"
+								style="border:0" title="Adiciona objeto do interno." />
+							<f:setPropertyActionListener
+								target="#{mbInternacaoController.objeto}" value="#{objeto}" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+
+				<h:form>
+					<p:growl id="growl" sticky="true" showDetail="true" />
+					<p:dialog header="Seletor de quantidade" widgetVar="dlg"
+						resizable="false">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="qtd" value="Quantidade" />
+							<p:inputText id="qtd"
+								value="#{mbInternacaoController.qtdObjetos}" required="true"
+								label="qtd" />
+
+							<f:facet name="footer">
+								<p:commandButton 
+									onclick="PF('dlg').hide();" value="Ok"
+									update="growl"
+									action="#{mbInternacaoController.adicioNaObjetoListaObjetos()}" />
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
+
+			</h:form>
+
+		</p:fieldset>
+	</ui:define>
+
+</ui:composition>

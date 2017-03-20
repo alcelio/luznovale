@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="tarefas">
+		<p:fieldset legend="Ficha de Internação">
+
+			<h:form prependId="false" id="formDadosInterno">
+				<p:growl id="msg0" showDetail="true" showSummary="true" />
+
+				<!-- **************************************************************************** -->
+				<!-- *************************PAINLE DA ESQUERDA ******************************** -->
+				<!-- **************************************************************************** -->
+				<div id="painelEsquerda">
+
+					<h:panelGrid columns="2" cellpadding="10" cellspacing="10">
+
+
+						<h:outputLabel for="nome" value="Nome Interno:"
+							style="float: right;" />
+
+						<h:panelGrid columns="2">
+							<p:inputText id="nome" size="45"
+								value="#{mbInternacaoController.internacao.interno.desNomePessoa}"
+								onkeyup="this.value = this.value.toUpperCase()" required="true"
+								requiredMessage="O campo [Nome Interno] é obrigatório." />
+
+
+							<p:commandButton id="adicionarInterno" icon="ui-icon-search"
+								title="Buscar por internos cadastrados." style="float:right"
+								immediate="true" action="/restrito/pesquisaInternos.jsf"
+								update="@all">
+								<p:ajax
+									listener="#{dtFilterInterno.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
+							</p:commandButton>
+
+						</h:panelGrid>
+
+
+						<h:outputLabel for="nomeMae" value="Nome Mãe:"
+							style="float: right;" />
+						<p:inputText id="nomeMae" size="50"
+							value="#{mbInternacaoController.internacao.interno.desNomeMae}"
+							onkeyup="this.value = this.value.toUpperCase()" required="false"
+							requiredMessage="O campo [Nome Mão] é obrigatório." />
+
+						<h:outputLabel for="nomePai" value="Nome Pai:"
+							style="float: right;" />
+						<p:inputText id="nomePai" size="50"
+							value="#{mbInternacaoController.internacao.interno.desNomePai}"
+							onkeyup="this.value = this.value.toUpperCase()" required="false"
+							requiredMessage="O campo [Nome Pai] é obrigatório." />
+
+						<h:outputLabel for="email" value="Email:" style="float: right;" />
+						<p:inputText id="email" size="50"
+							value="#{mbInternacaoController.internacao.interno.desEmail}"
+							required="false" requiredMessage="O campo [Email: é obrigatório." />
+
+
+						<h:outputLabel for="logradouro" value="Logradouro:"
+							style="float: right; right; width: 80px;  margin-left: 95px" />
+						<h:panelGrid columns="4">
+							<p:selectOneMenu id="logradouro" style="width: 80px;"
+								value="#{mbInternacaoController.internacao.interno.endereco.logradouro.idLogradouro}">
+								<f:selectItem itemLabel="Selecione" itemValue="null" />
+								<f:selectItems value="#{bbLogradouro.logradouros}"
+									var="logradouro" itemValue="#{logradouro.idLogradouro}"
+									itemLabel="#{logradouro.desLogradouro}" size="15px" />
+							</p:selectOneMenu>
+
+
+							<p:commandButton id="adicionarLogradouro" icon="ui-icon-search"
+								title="Adicionar Logradouro." style="float:right"
+								immediate="true" action="/restrito/buscaLogradouro.jsf"
+								update="@all">
+								<p:ajax
+									listener="#{mbLogradouroController.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
+							</p:commandButton>
+
+							<h:outputLabel for="bairro" value="Bairro:"
+								style="float: right; right; width: 50px;  margin-left: 10px" />
+
+							<p:inputText id="bairro" size="23"
+								onkeyup="this.value = this.value.toUpperCase()"
+								value="#{mbInternacaoController.internacao.interno.endereco.desBairro}"
+								required="false"
+								requiredMessage="O campo [Endereco: é obrigatório." />
+
+						</h:panelGrid>
+
+
+
+						<h:outputLabel for="endereco" value="Endereço:"
+							style="float: right;" />
+						<h:panelGrid columns="3">
+
+							<p:inputText id="endereco" size="37"
+								onkeyup="this.value = this.value.toUpperCase()"
+								value="#{mbInternacaoController.internacao.interno.endereco.desEndereco}"
+								required="false"
+								requiredMessage="O campo [Endereco: é obrigatório." />
+
+							<h:outputLabel for="numero" value="N°:"
+								style="float: right; right; width: 20px;  margin-left: 20px" />
+
+							<p:inputText id="numero" size="4" style="margin-left: 10px;"
+								value="#{mbInternacaoController.internacao.interno.endereco.numNumero}"
+								required="false"
+								requiredMessage="O campo [Número] é obrigatório." />
+
+						</h:panelGrid>
+
+
+						<h:outputLabel for="cidade" value="Cidade:"
+							style="float: right; right; width: 80px;  margin-left: 95px" />
+						<h:panelGrid columns="5">
+							<p:selectOneMenu id="cidade" style="width: 235px;"
+								value="#{mbInternacaoController.internacao.interno.endereco.cidade.idCidade}">
+								<f:selectItem itemLabel="Selecione" itemValue="null" />
+								<f:selectItems value="#{bbCidade.cidades}"
+									var="cidade" itemValue="#{cidade.idCidade}"
+									itemLabel="#{cidade.desNomeCidade}" size="14px" />
+							</p:selectOneMenu>
+
+
+							<p:commandButton id="adicionarCidade" icon="ui-icon-search"
+								title="Adicionar Cidade." style="float:right"
+								immediate="true" action="/restrito/buscaCidade.jsf"
+								update="@all">
+								<p:ajax
+									listener="#{mbCidadeController.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
+							</p:commandButton>
+
+							<h:outputLabel for="cep" value="CEP: "
+								style="float: right; width: 40x;  margin-left: 22px" />
+
+							<p:inputMask id="cep" size="8" mask="99.999-999"
+								onkeyup="this.value = this.value.toUpperCase()"
+								value="#{mbInternacaoController.internacao.interno.endereco.desCEP}"
+								required="false"
+								requiredMessage="O campo [Endereco: é obrigatório." />
+
+						</h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+						<h:outputLabel for="dataNascimento" value="Data de Nasc:"
+							style="float: right;" />
+
+						<h:panelGrid columns="3">
+
+							<p:calendar id="dataNascimento" yearRange="-70:-12"
+								value="#{mbInternacaoController.internacao.interno.dtaNascimento}"
+								required="true"
+								requiredMessage="O campo [Data de Nascimento] é obrigatório"
+								locale="pt_BR" navigator="true" effect="explode"
+								pattern="dd/MM/yyyy" size="12" />
+
+
+							<h:outputLabel for="RG" value="Número RG:"
+								style="float: right; width: 105px;  margin-left: 100px" />
+							<p:inputText id="RG" size="12"
+								value="#{mbInternacaoController.internacao.interno.desRG}"
+								onkeyup="this.value = this.value.toUpperCase()" required="false"
+								requiredMessage="O campo [Número RG] é obrigatório." />
+
+						</h:panelGrid>
+
+						<h:outputLabel for="CPF" value="Número CPF:" style="float: right;" />
+						<h:panelGrid columns="3">
+
+							<p:inputMask id="CPF" size="12" mask="999.999.999-99"
+								value="#{mbInternacaoController.internacao.interno.desCPF}"
+								onkeyup="this.value = this.value.toUpperCase()" required="false"
+								requiredMessage="O campo [Número CPF] é obrigatório." />
+
+							<h:outputLabel for="CNH" value="Número CNH:"
+								style="float: right; right; width: 105px;  margin-left: 100px" />
+							<p:inputText id="CNH" size="12"
+								value="#{mbInternacaoController.internacao.interno.desCNH}"
+								onkeyup="this.value = this.value.toUpperCase()" required="false"
+								requiredMessage="O campo [Número CNH] é obrigatório." />
+
+						</h:panelGrid>
+
+
+
+						<h:outputLabel for="CPT" value="Número CPT:" style="float: right;" />
+						<h:panelGrid columns="3">
+
+							<p:inputText id="CPT" size="12"
+								value="#{mbInternacaoController.internacao.interno.desCPT}"
+								onkeyup="this.value = this.value.toUpperCase()" required="false"
+								requiredMessage="O campo [Número CPT] é obrigatório." />
+
+							<h:outputLabel for="fone01" value="Telefone 01:"
+								style="float: right;right; width: 105px; margin-left: 100px" />
+							<p:inputMask id="fone01" size="12" mask="(99) 99999-9999"
+								value="#{mbInternacaoController.internacao.interno.desFone1}"
+								required="false"
+								requiredMessage="O campo [Telefone] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()" />
+
+						</h:panelGrid>
+
+
+						<h:outputLabel for="fone02" value="Telefone 02:"
+							style="float: right;" />
+						<h:panelGrid columns="4">
+
+							<p:inputMask id="fone02" size="12" mask="(99) 99999-9999"
+								value="#{mbInternacaoController.internacao.interno.desFone2}"
+								required="false"
+								requiredMessage="O campo [Telefone 02] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()" />
+
+							<h:outputLabel for="fone03" value="Telefone 03:"
+								style="float: right; right; width: 105px;  margin-left: 100px" />
+							<p:inputMask id="fone03" size="12" mask="(99) 99999-9999"
+								value="#{mbInternacaoController.internacao.interno.desFone3}"
+								required="false"
+								requiredMessage="O campo [Telefone 03] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()" />
+
+						</h:panelGrid>
+
+
+						<h:outputLabel for="vlrPassagem" value="Valor Fundo Passagem:"
+							style="float: right;" />
+						<h:panelGrid columns="4">
+
+							<h:inputText id="vlrPassagem" size="12"
+								value="#{mbInternacaoController.internacao.vlrFundoPassagem}"
+								required="false"
+								requiredMessage="O campo [Valor Passagem] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()">
+								<f:convertNumber pattern="#0.00" />
+							</h:inputText>
+
+							<h:outputLabel for="sexo" value="Sexo:"
+								style="float: right; right; width: 80px;  margin-left: 95px" />
+							<p:selectOneMenu id="sexo" style="width: 80px;"
+								value="#{mbInternacaoController.internacao.interno.sexo.idSexo}">
+								<f:selectItem itemLabel="Selecione" itemValue="null" />
+								<f:selectItems value="#{bbSexo.sexos}" var="sexo"
+									itemValue="#{sexo.idSexo}" itemLabel="#{sexo.dsSexo}"
+									size="15px" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+
+
+
+
+						<h:outputLabel for="outros" value="Outros Documentos:"
+							style="float: right;" />
+						<p:inputTextarea id="outros" cols="50"
+							value="#{mbInternacaoController.internacao.interno.outrosDocs}"
+							required="false" />
+
+
+						<p:outputLabel />
+						<p:panel>
+							<p:commandButton value="Salvar/Atualizar Interno"
+								action="#{mbInternacaoController.salvarInteno()}"
+								icon="ui-icon-disk" update="@all" />
+						</p:panel>
+
+					</h:panelGrid>
+
+
+
+				</div>
+				<!--******* FIM PAINEL DA ESQUERDA **********-->
+
+				<!-- **************************************************************************** -->
+				<!-- *************************PAINLE DA DIREITA ******************************** -->
+				<!-- **************************************************************************** -->
+				<div id="painelDireita">
+
+					<!--***** INICIO TABELA DE OBEJETOS DO USUARIO **** -->
+					<p:dataTable id="dataTable" var="objeto" widgetVar="objetosTable"
+						rendered="#{mbInternacaoController.salvouInterno}"
+						filteredValue="#{mbInternacaoController.objetosInternoFiltrados}"
+						value="#{mbInternacaoController.internacao.objetos}"
+						emptyMessage="Nenhum registro encontrado"
+						style="width:500px; margin-left:80px; margin-top:10px"
+						scrollable="true" scrollHeight="340">
+
+						<f:facet name="header">LISTA DE OBJETOS</f:facet>
+
+
+						<p:column width="150px" filterBy="#{objeto.objeto.desObjeto}"
+							filterStyle="width:250px" headerText="Busca objeto por Descrição"
+							filterMatchMode="contains" style="width:150px; ">
+							<h:outputText value="#{objeto.objeto.desObjeto}" />
+						</p:column>
+
+						<p:column headerText="Quantidade" style="width:52px; ">
+							<div align="center">
+								<h:outputText value="#{objeto.quantidade}" />
+							</div>
+						</p:column>
+
+						<p:column width="50">
+							<f:facet name="header">
+								<p:commandLink action="/restrito/objetosInterno.jsf"
+									immediate="true">
+									<p:graphicImage library="imagens" name="add.png"
+										style="border:0"
+										title="Clique para adicionar objetos do interno." />
+									<p:ajax
+										listener="#{mbObjetosController.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
+
+								</p:commandLink>
+							</f:facet>
+							<div align="center">
+								<p:commandLink update="dataTable" process="@this"
+									actionListener="#{mbInternacaoController.excluirObjetoDaLista(objeto)}"
+									onclick="if (!confirm('Confirma a exclusão do objeto #{objeto.objeto.desObjeto}?')) return false;">
+
+									<p:graphicImage library="imagens" name="remove.png"
+										style="border:0" width="25px"
+										title="Remove o objeto do interno." />
+								</p:commandLink>
+							</div>
+						</p:column>
+
+					</p:dataTable>
+
+					<!--***** FIM TABELA DE OBEJTOS DO USUARIO **** -->
+
+					<!--***INICIO DA TABELA DE DROGAS DO USUARIO ***** -->
+					<p:dataTable id="dataTableDrogas" var="droga"
+						rendered="#{mbInternacaoController.salvouInterno}"
+						widgetVar="drogasTable"
+						filteredValue="#{mbInternacaoController.drogasFiltradas}"
+						value="#{mbInternacaoController.internacao.interno.drogas}"
+						emptyMessage="Nenhum registro encontrado"
+						style="width:500px; margin-left:80px; margin-top:10px"
+						scrollable="true" scrollHeight="140">
+
+						<f:facet name="header">VÍCIOS DO INTERNO</f:facet>
+
+
+						<p:column width="150px" filterBy="#{droga.desDroga}"
+							filterStyle="width:250px" headerText="Busca droga por Descrição"
+							filterMatchMode="contains" style="width:150px; ">
+							<h:outputText value="#{droga.desDroga}" />
+						</p:column>
+
+						<p:column width="50">
+							<f:facet name="header">
+								<p:commandLink process="@this"
+									action="/restrito/drogasInterno.jsf" update="@all"
+									immediate="true">
+									<p:graphicImage library="imagens" name="add.png"
+										style="border:0" title="Adicionar as dependências do interno." />
+									<p:ajax
+										listener="#{mbDrogaController.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
+								</p:commandLink>
+							</f:facet>
+							<div align="center">
+								<p:commandLink update="dataTableDrogas" process="@this"
+									actionListener="#{mbInternacaoController.excluirDrogaDaLista(droga)}"
+									onclick="if (!confirm('Confirma a exclusão da droga #{droga.desDroga}?')) return false;">
+
+									<p:graphicImage library="imagens" name="remove.png"
+										style="border:0" width="25px" title="Remove a droga da lsita." />
+								</p:commandLink>
+							</div>
+						</p:column>
+
+					</p:dataTable>
+
+					<!--***** FIM TABELA DE OBEJTOS DO USUARIO **** -->
+				</div>
+				<!--*******FIM PAINEL DA DIREITA **********-->
+
+
+			</h:form>
+
+		</p:fieldset>
+	</ui:define>
+
+</ui:composition>
