@@ -18,7 +18,7 @@ import br.com.luznovale.model.Cidade;
  * Classe para controlar os eventos da entidade Cidade
  * @author Alcélio Gomes
  *
- */
+  */
 
 @ManagedBean
 @SessionScoped
