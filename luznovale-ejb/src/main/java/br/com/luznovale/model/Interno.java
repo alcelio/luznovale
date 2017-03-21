@@ -33,14 +33,6 @@ public class Interno extends Pessoa implements Serializable {
 	
 	private String moraCom;
 
-	private boolean relacaoFamiliaMal;
-	
-	private boolean relacaoFamiliaBoa;
-	
-	private boolean relacaoFamiliaRegular;
-	
-	private boolean relacaoFamiliaOtima;
-	
 	private boolean trabalhaSim;
 	
 	private boolean trabalhaNao;
@@ -79,7 +71,12 @@ public class Interno extends Pessoa implements Serializable {
 	
 	private boolean docEntradaSemDocumentos;
 	
+	private String ondeEsteveInternado;
 	
+	private String relacaoFamiliar;
+	
+	
+
 	@OneToMany
 	private Set<Instituicao> instituição;
 	
@@ -154,62 +151,6 @@ public class Interno extends Pessoa implements Serializable {
 	 */
 	public void setMoraCom(String moraCom) {
 		this.moraCom = moraCom;
-	}
-
-	/**
-	 * @return the relacaoFamiliaMal
-	 */
-	public boolean isRelacaoFamiliaMal() {
-		return relacaoFamiliaMal;
-	}
-
-	/**
-	 * @param relacaoFamiliaMal the relacaoFamiliaMal to set
-	 */
-	public void setRelacaoFamiliaMal(boolean relacaoFamiliaMal) {
-		this.relacaoFamiliaMal = relacaoFamiliaMal;
-	}
-
-	/**
-	 * @return the relacaoFamiliaBoa
-	 */
-	public boolean isRelacaoFamiliaBoa() {
-		return relacaoFamiliaBoa;
-	}
-
-	/**
-	 * @param relacaoFamiliaBoa the relacaoFamiliaBoa to set
-	 */
-	public void setRelacaoFamiliaBoa(boolean relacaoFamiliaBoa) {
-		this.relacaoFamiliaBoa = relacaoFamiliaBoa;
-	}
-
-	/**
-	 * @return the relacaoFamiliaRegular
-	 */
-	public boolean isRelacaoFamiliaRegular() {
-		return relacaoFamiliaRegular;
-	}
-
-	/**
-	 * @param relacaoFamiliaRegular the relacaoFamiliaRegular to set
-	 */
-	public void setRelacaoFamiliaRegular(boolean relacaoFamiliaRegular) {
-		this.relacaoFamiliaRegular = relacaoFamiliaRegular;
-	}
-
-	/**
-	 * @return the relacaoFamiliaOtima
-	 */
-	public boolean isRelacaoFamiliaOtima() {
-		return relacaoFamiliaOtima;
-	}
-
-	/**
-	 * @param relacaoFamiliaOtima the relacaoFamiliaOtima to set
-	 */
-	public void setRelacaoFamiliaOtima(boolean relacaoFamiliaOtima) {
-		this.relacaoFamiliaOtima = relacaoFamiliaOtima;
 	}
 
 	/**
@@ -479,6 +420,34 @@ public class Interno extends Pessoa implements Serializable {
 	}
 
 	/**
+	 * @return the ondeEsteveInternado
+	 */
+	public String getOndeEsteveInternado() {
+		return ondeEsteveInternado;
+	}
+
+	/**
+	 * @param ondeEsteveInternado the ondeEsteveInternado to set
+	 */
+	public void setOndeEsteveInternado(String ondeEsteveInternado) {
+		this.ondeEsteveInternado = ondeEsteveInternado;
+	}
+
+	/**
+	 * @return the relacaoFamiliar
+	 */
+	public String getRelacaoFamiliar() {
+		return relacaoFamiliar;
+	}
+
+	/**
+	 * @param relacaoFamiliar the relacaoFamiliar to set
+	 */
+	public void setRelacaoFamiliar(String relacaoFamiliar) {
+		this.relacaoFamiliar = relacaoFamiliar;
+	}
+
+	/**
 	 * @return the instituição
 	 */
 	public Set<Instituicao> getInstituição() {
@@ -585,15 +554,13 @@ public class Interno extends Pessoa implements Serializable {
 		result = prime * result + ((instituição == null) ? 0 : instituição.hashCode());
 		result = prime * result + ((interncaoesInternado == null) ? 0 : interncaoesInternado.hashCode());
 		result = prime * result + ((moraCom == null) ? 0 : moraCom.hashCode());
+		result = prime * result + ((ondeEsteveInternado == null) ? 0 : ondeEsteveInternado.hashCode());
 		result = prime * result + ((ostrosProblemas == null) ? 0 : ostrosProblemas.hashCode());
 		result = prime * result + (problemaJustica ? 1231 : 1237);
 		result = prime * result + (problemaSaude ? 1231 : 1237);
 		result = prime * result + (problemaTrabalhista ? 1231 : 1237);
 		result = prime * result + ((profissao == null) ? 0 : profissao.hashCode());
-		result = prime * result + (relacaoFamiliaBoa ? 1231 : 1237);
-		result = prime * result + (relacaoFamiliaMal ? 1231 : 1237);
-		result = prime * result + (relacaoFamiliaOtima ? 1231 : 1237);
-		result = prime * result + (relacaoFamiliaRegular ? 1231 : 1237);
+		result = prime * result + ((relacaoFamiliar == null) ? 0 : relacaoFamiliar.hashCode());
 		result = prime * result + ((religiao == null) ? 0 : religiao.hashCode());
 		result = prime * result + ((tempoInternado == null) ? 0 : tempoInternado.hashCode());
 		result = prime * result + ((tempoSemTrabalhar == null) ? 0 : tempoSemTrabalhar.hashCode());
@@ -663,6 +630,11 @@ public class Interno extends Pessoa implements Serializable {
 				return false;
 		} else if (!moraCom.equals(other.moraCom))
 			return false;
+		if (ondeEsteveInternado == null) {
+			if (other.ondeEsteveInternado != null)
+				return false;
+		} else if (!ondeEsteveInternado.equals(other.ondeEsteveInternado))
+			return false;
 		if (ostrosProblemas == null) {
 			if (other.ostrosProblemas != null)
 				return false;
@@ -679,13 +651,10 @@ public class Interno extends Pessoa implements Serializable {
 				return false;
 		} else if (!profissao.equals(other.profissao))
 			return false;
-		if (relacaoFamiliaBoa != other.relacaoFamiliaBoa)
-			return false;
-		if (relacaoFamiliaMal != other.relacaoFamiliaMal)
-			return false;
-		if (relacaoFamiliaOtima != other.relacaoFamiliaOtima)
-			return false;
-		if (relacaoFamiliaRegular != other.relacaoFamiliaRegular)
+		if (relacaoFamiliar == null) {
+			if (other.relacaoFamiliar != null)
+				return false;
+		} else if (!relacaoFamiliar.equals(other.relacaoFamiliar))
 			return false;
 		if (religiao == null) {
 			if (other.religiao != null)
@@ -720,4 +689,6 @@ public class Interno extends Pessoa implements Serializable {
 	}
 
 
+	
+	
 }

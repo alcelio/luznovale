@@ -123,16 +123,15 @@
 							<p:selectOneMenu id="cidade" style="width: 235px;"
 								value="#{mbInternacaoController.internacao.interno.endereco.cidade.idCidade}">
 								<f:selectItem itemLabel="Selecione" itemValue="null" />
-								<f:selectItems value="#{bbCidade.cidades}"
-									var="cidade" itemValue="#{cidade.idCidade}"
+								<f:selectItems value="#{bbCidade.cidades}" var="cidade"
+									itemValue="#{cidade.idCidade}"
 									itemLabel="#{cidade.desNomeCidade}" size="14px" />
 							</p:selectOneMenu>
 
 
 							<p:commandButton id="adicionarCidade" icon="ui-icon-search"
-								title="Adicionar Cidade." style="float:right"
-								immediate="true" action="/restrito/buscaCidade.jsf"
-								update="@all">
+								title="Adicionar Cidade." style="float:right" immediate="true"
+								action="/restrito/buscaCidade.jsf" update="@all">
 								<p:ajax
 									listener="#{mbCidadeController.setaCaminhoOrigem(bbGlobal.PAGINA_REGISTRAR_INTERNACAO)}" />
 							</p:commandButton>
@@ -147,15 +146,6 @@
 								requiredMessage="O campo [Endereco: é obrigatório." />
 
 						</h:panelGrid>
-
-
-
-
-
-
-
-
-
 
 
 						<h:outputLabel for="dataNascimento" value="Data de Nasc:"
@@ -263,6 +253,57 @@
 
 						</h:panelGrid>
 
+
+
+
+						<h:outputLabel for="esteveInternado" value="Esteve Internado:"
+							style="float: right;" />
+						<h:panelGrid columns="4">
+
+							<p:selectBooleanCheckbox id="esteveInternado" size="20"
+								value="#{mbInternacaoController.internacao.interno.esteveInternado}"
+								required="false"
+								requiredMessage="O campo [Valor Passagem] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()">
+
+							</p:selectBooleanCheckbox>
+
+							<h:outputLabel for="tempoInternado" value="Tempo Internado:"
+								style="float: right; right; width: 140px;  margin-left: 150px" />
+							<h:inputText id="tempoInternado" size="15"
+								value="#{mbInternacaoController.internacao.interno.tempoInternado}"
+								required="false"
+								requiredMessage="O campo [Tempo Internado] é obrigatório"
+								onkeyup="this.value = this.value.toUpperCase()">
+								<f:convertNumber pattern="#0.00" />
+							</h:inputText>
+
+						</h:panelGrid>
+
+
+
+						<h:outputLabel for="internacoes" value="Onde esteve internado?"
+							style="float: right;" />
+						<p:inputTextarea id="internacoes" cols="50"
+							value="#{mbInternacaoController.internacao.interno.ondeEsteveInternado}"
+							required="false" />
+
+
+
+
+
+						<p:outputLabel for="relacao" value="Relação Familiar:" />
+						<h:panelGrid columns="1" style="margin-bottom:10px"
+							cellpadding="10">
+
+							<p:selectOneRadio id="relacao" columns="4" style="width:445px; "
+								value="#{mbInternacaoController.internacao.interno.relacaoFamiliar}">
+								<f:selectItem itemLabel="Mal" itemValue="MAL" size="12"  />
+								<f:selectItem itemLabel="Regular" itemValue="REGULAR" />
+								<f:selectItem itemLabel="Boa" itemValue="BOA" />
+								<f:selectItem itemLabel="Ótima" itemValue="ÓTIMA" />
+							</p:selectOneRadio>
+						</h:panelGrid>
 
 
 
