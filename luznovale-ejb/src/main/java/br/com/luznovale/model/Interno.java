@@ -33,9 +33,7 @@ public class Interno extends Pessoa implements Serializable {
 	
 	private String moraCom;
 
-	private boolean trabalhaSim;
-	
-	private boolean trabalhaNao;
+	private boolean trabalha;
 	
 	private String trabalhaOnde;
 	
@@ -111,12 +109,16 @@ public class Interno extends Pessoa implements Serializable {
 		
 	}
 
+
+
 	/**
 	 * @return the esteveInternado
 	 */
 	public boolean isEsteveInternado() {
 		return esteveInternado;
 	}
+
+
 
 	/**
 	 * @param esteveInternado the esteveInternado to set
@@ -125,12 +127,16 @@ public class Interno extends Pessoa implements Serializable {
 		this.esteveInternado = esteveInternado;
 	}
 
+
+
 	/**
 	 * @return the tempoInternado
 	 */
 	public String getTempoInternado() {
 		return tempoInternado;
 	}
+
+
 
 	/**
 	 * @param tempoInternado the tempoInternado to set
@@ -139,12 +145,16 @@ public class Interno extends Pessoa implements Serializable {
 		this.tempoInternado = tempoInternado;
 	}
 
+
+
 	/**
 	 * @return the moraCom
 	 */
 	public String getMoraCom() {
 		return moraCom;
 	}
+
+
 
 	/**
 	 * @param moraCom the moraCom to set
@@ -153,33 +163,25 @@ public class Interno extends Pessoa implements Serializable {
 		this.moraCom = moraCom;
 	}
 
-	/**
-	 * @return the trabalhaSim
-	 */
-	public boolean isTrabalhaSim() {
-		return trabalhaSim;
-	}
+
 
 	/**
-	 * @param trabalhaSim the trabalhaSim to set
+	 * @return the trabalha
 	 */
-	public void setTrabalhaSim(boolean trabalhaSim) {
-		this.trabalhaSim = trabalhaSim;
+	public boolean isTrabalha() {
+		return trabalha;
 	}
 
-	/**
-	 * @return the trabalhaNao
-	 */
-	public boolean isTrabalhaNao() {
-		return trabalhaNao;
-	}
+
 
 	/**
-	 * @param trabalhaNao the trabalhaNao to set
+	 * @param trabalha the trabalha to set
 	 */
-	public void setTrabalhaNao(boolean trabalhaNao) {
-		this.trabalhaNao = trabalhaNao;
+	public void setTrabalha(boolean trabalha) {
+		this.trabalha = trabalha;
 	}
+
+
 
 	/**
 	 * @return the trabalhaOnde
@@ -188,12 +190,16 @@ public class Interno extends Pessoa implements Serializable {
 		return trabalhaOnde;
 	}
 
+
+
 	/**
 	 * @param trabalhaOnde the trabalhaOnde to set
 	 */
 	public void setTrabalhaOnde(String trabalhaOnde) {
 		this.trabalhaOnde = trabalhaOnde;
 	}
+
+
 
 	/**
 	 * @return the tempoTrabalho
@@ -202,12 +208,16 @@ public class Interno extends Pessoa implements Serializable {
 		return tempoTrabalho;
 	}
 
+
+
 	/**
 	 * @param tempoTrabalho the tempoTrabalho to set
 	 */
 	public void setTempoTrabalho(String tempoTrabalho) {
 		this.tempoTrabalho = tempoTrabalho;
 	}
+
+
 
 	/**
 	 * @return the tempoSemTrabalhar
@@ -216,12 +226,16 @@ public class Interno extends Pessoa implements Serializable {
 		return tempoSemTrabalhar;
 	}
 
+
+
 	/**
 	 * @param tempoSemTrabalhar the tempoSemTrabalhar to set
 	 */
 	public void setTempoSemTrabalhar(String tempoSemTrabalhar) {
 		this.tempoSemTrabalhar = tempoSemTrabalhar;
 	}
+
+
 
 	/**
 	 * @return the problemaTrabalhista
@@ -230,12 +244,16 @@ public class Interno extends Pessoa implements Serializable {
 		return problemaTrabalhista;
 	}
 
+
+
 	/**
 	 * @param problemaTrabalhista the problemaTrabalhista to set
 	 */
 	public void setProblemaTrabalhista(boolean problemaTrabalhista) {
 		this.problemaTrabalhista = problemaTrabalhista;
 	}
+
+
 
 	/**
 	 * @return the problemaJustica
@@ -244,12 +262,16 @@ public class Interno extends Pessoa implements Serializable {
 		return problemaJustica;
 	}
 
+
+
 	/**
 	 * @param problemaJustica the problemaJustica to set
 	 */
 	public void setProblemaJustica(boolean problemaJustica) {
 		this.problemaJustica = problemaJustica;
 	}
+
+
 
 	/**
 	 * @return the problemaSaude
@@ -258,12 +280,16 @@ public class Interno extends Pessoa implements Serializable {
 		return problemaSaude;
 	}
 
+
+
 	/**
 	 * @param problemaSaude the problemaSaude to set
 	 */
 	public void setProblemaSaude(boolean problemaSaude) {
 		this.problemaSaude = problemaSaude;
 	}
+
+
 
 	/**
 	 * @return the ostrosProblemas
@@ -272,12 +298,16 @@ public class Interno extends Pessoa implements Serializable {
 		return ostrosProblemas;
 	}
 
+
+
 	/**
 	 * @param ostrosProblemas the ostrosProblemas to set
 	 */
 	public void setOstrosProblemas(String ostrosProblemas) {
 		this.ostrosProblemas = ostrosProblemas;
 	}
+
+
 
 	/**
 	 * @return the docEntradaRG
@@ -286,12 +316,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaRG;
 	}
 
+
+
 	/**
 	 * @param docEntradaRG the docEntradaRG to set
 	 */
 	public void setDocEntradaRG(boolean docEntradaRG) {
 		this.docEntradaRG = docEntradaRG;
 	}
+
+
 
 	/**
 	 * @return the docEntradaCPF
@@ -300,12 +334,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaCPF;
 	}
 
+
+
 	/**
 	 * @param docEntradaCPF the docEntradaCPF to set
 	 */
 	public void setDocEntradaCPF(boolean docEntradaCPF) {
 		this.docEntradaCPF = docEntradaCPF;
 	}
+
+
 
 	/**
 	 * @return the docEntradaCPT
@@ -314,12 +352,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaCPT;
 	}
 
+
+
 	/**
 	 * @param docEntradaCPT the docEntradaCPT to set
 	 */
 	public void setDocEntradaCPT(boolean docEntradaCPT) {
 		this.docEntradaCPT = docEntradaCPT;
 	}
+
+
 
 	/**
 	 * @return the docEntradaCarteiraVacina
@@ -328,12 +370,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaCarteiraVacina;
 	}
 
+
+
 	/**
 	 * @param docEntradaCarteiraVacina the docEntradaCarteiraVacina to set
 	 */
 	public void setDocEntradaCarteiraVacina(boolean docEntradaCarteiraVacina) {
 		this.docEntradaCarteiraVacina = docEntradaCarteiraVacina;
 	}
+
+
 
 	/**
 	 * @return the docEntradaCertNascimento
@@ -342,12 +388,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaCertNascimento;
 	}
 
+
+
 	/**
 	 * @param docEntradaCertNascimento the docEntradaCertNascimento to set
 	 */
 	public void setDocEntradaCertNascimento(boolean docEntradaCertNascimento) {
 		this.docEntradaCertNascimento = docEntradaCertNascimento;
 	}
+
+
 
 	/**
 	 * @return the docEntradaTercerira
@@ -356,12 +406,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaTercerira;
 	}
 
+
+
 	/**
 	 * @param docEntradaTercerira the docEntradaTercerira to set
 	 */
 	public void setDocEntradaTercerira(boolean docEntradaTercerira) {
 		this.docEntradaTercerira = docEntradaTercerira;
 	}
+
+
 
 	/**
 	 * @return the docEntradaCartaoSUS
@@ -370,12 +424,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaCartaoSUS;
 	}
 
+
+
 	/**
 	 * @param docEntradaCartaoSUS the docEntradaCartaoSUS to set
 	 */
 	public void setDocEntradaCartaoSUS(boolean docEntradaCartaoSUS) {
 		this.docEntradaCartaoSUS = docEntradaCartaoSUS;
 	}
+
+
 
 	/**
 	 * @return the docEntradaPassaporte
@@ -384,12 +442,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaPassaporte;
 	}
 
+
+
 	/**
 	 * @param docEntradaPassaporte the docEntradaPassaporte to set
 	 */
 	public void setDocEntradaPassaporte(boolean docEntradaPassaporte) {
 		this.docEntradaPassaporte = docEntradaPassaporte;
 	}
+
+
 
 	/**
 	 * @return the docEntradaLaudoMedico
@@ -398,12 +460,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaLaudoMedico;
 	}
 
+
+
 	/**
 	 * @param docEntradaLaudoMedico the docEntradaLaudoMedico to set
 	 */
 	public void setDocEntradaLaudoMedico(boolean docEntradaLaudoMedico) {
 		this.docEntradaLaudoMedico = docEntradaLaudoMedico;
 	}
+
+
 
 	/**
 	 * @return the docEntradaSemDocumentos
@@ -412,12 +478,16 @@ public class Interno extends Pessoa implements Serializable {
 		return docEntradaSemDocumentos;
 	}
 
+
+
 	/**
 	 * @param docEntradaSemDocumentos the docEntradaSemDocumentos to set
 	 */
 	public void setDocEntradaSemDocumentos(boolean docEntradaSemDocumentos) {
 		this.docEntradaSemDocumentos = docEntradaSemDocumentos;
 	}
+
+
 
 	/**
 	 * @return the ondeEsteveInternado
@@ -426,12 +496,16 @@ public class Interno extends Pessoa implements Serializable {
 		return ondeEsteveInternado;
 	}
 
+
+
 	/**
 	 * @param ondeEsteveInternado the ondeEsteveInternado to set
 	 */
 	public void setOndeEsteveInternado(String ondeEsteveInternado) {
 		this.ondeEsteveInternado = ondeEsteveInternado;
 	}
+
+
 
 	/**
 	 * @return the relacaoFamiliar
@@ -440,12 +514,16 @@ public class Interno extends Pessoa implements Serializable {
 		return relacaoFamiliar;
 	}
 
+
+
 	/**
 	 * @param relacaoFamiliar the relacaoFamiliar to set
 	 */
 	public void setRelacaoFamiliar(String relacaoFamiliar) {
 		this.relacaoFamiliar = relacaoFamiliar;
 	}
+
+
 
 	/**
 	 * @return the instituição
@@ -454,12 +532,16 @@ public class Interno extends Pessoa implements Serializable {
 		return instituição;
 	}
 
+
+
 	/**
 	 * @param instituição the instituição to set
 	 */
 	public void setInstituição(Set<Instituicao> instituição) {
 		this.instituição = instituição;
 	}
+
+
 
 	/**
 	 * @return the religiao
@@ -468,12 +550,16 @@ public class Interno extends Pessoa implements Serializable {
 		return religiao;
 	}
 
+
+
 	/**
 	 * @param religiao the religiao to set
 	 */
 	public void setReligiao(Religiao religiao) {
 		this.religiao = religiao;
 	}
+
+
 
 	/**
 	 * @return the profissao
@@ -482,12 +568,16 @@ public class Interno extends Pessoa implements Serializable {
 		return profissao;
 	}
 
+
+
 	/**
 	 * @param profissao the profissao to set
 	 */
 	public void setProfissao(Profissao profissao) {
 		this.profissao = profissao;
 	}
+
+
 
 	/**
 	 * @return the escolaridade
@@ -496,12 +586,16 @@ public class Interno extends Pessoa implements Serializable {
 		return escolaridade;
 	}
 
+
+
 	/**
 	 * @param escolaridade the escolaridade to set
 	 */
 	public void setEscolaridade(Escolaridade escolaridade) {
 		this.escolaridade = escolaridade;
 	}
+
+
 
 	/**
 	 * @return the drogas
@@ -510,12 +604,16 @@ public class Interno extends Pessoa implements Serializable {
 		return drogas;
 	}
 
+
+
 	/**
 	 * @param drogas the drogas to set
 	 */
 	public void setDrogas(List<Droga> drogas) {
 		this.drogas = drogas;
 	}
+
+
 
 	/**
 	 * @return the interncaoesInternado
@@ -524,12 +622,16 @@ public class Interno extends Pessoa implements Serializable {
 		return interncaoesInternado;
 	}
 
+
+
 	/**
 	 * @param interncaoesInternado the interncaoesInternado to set
 	 */
 	public void setInterncaoesInternado(List<Instituicao> interncaoesInternado) {
 		this.interncaoesInternado = interncaoesInternado;
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -565,9 +667,8 @@ public class Interno extends Pessoa implements Serializable {
 		result = prime * result + ((tempoInternado == null) ? 0 : tempoInternado.hashCode());
 		result = prime * result + ((tempoSemTrabalhar == null) ? 0 : tempoSemTrabalhar.hashCode());
 		result = prime * result + ((tempoTrabalho == null) ? 0 : tempoTrabalho.hashCode());
-		result = prime * result + (trabalhaNao ? 1231 : 1237);
+		result = prime * result + (trabalha ? 1231 : 1237);
 		result = prime * result + ((trabalhaOnde == null) ? 0 : trabalhaOnde.hashCode());
-		result = prime * result + (trabalhaSim ? 1231 : 1237);
 		return result;
 	}
 
@@ -676,14 +777,12 @@ public class Interno extends Pessoa implements Serializable {
 				return false;
 		} else if (!tempoTrabalho.equals(other.tempoTrabalho))
 			return false;
-		if (trabalhaNao != other.trabalhaNao)
+		if (trabalha != other.trabalha)
 			return false;
 		if (trabalhaOnde == null) {
 			if (other.trabalhaOnde != null)
 				return false;
 		} else if (!trabalhaOnde.equals(other.trabalhaOnde))
-			return false;
-		if (trabalhaSim != other.trabalhaSim)
 			return false;
 		return true;
 	}
