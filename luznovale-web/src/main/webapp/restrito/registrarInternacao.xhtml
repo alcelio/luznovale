@@ -280,17 +280,11 @@
 
 						</h:panelGrid>
 
-
-
 						<h:outputLabel for="internacoes" value="Onde esteve internado?"
 							style="float: right;" />
 						<p:inputTextarea id="internacoes" cols="50"
 							value="#{mbInternacaoController.internacao.interno.ondeEsteveInternado}"
 							required="false" />
-
-
-
-
 
 						<p:outputLabel for="relacao" value="Relação Familiar:" />
 						<h:panelGrid columns="1" style="margin-bottom:10px"
@@ -298,11 +292,163 @@
 
 							<p:selectOneRadio id="relacao" columns="4" style="width:445px; "
 								value="#{mbInternacaoController.internacao.interno.relacaoFamiliar}">
-								<f:selectItem itemLabel="Mal" itemValue="MAL" size="12"  />
+								<f:selectItem itemLabel="Mal" itemValue="MAL" size="12" />
 								<f:selectItem itemLabel="Regular" itemValue="REGULAR" />
 								<f:selectItem itemLabel="Boa" itemValue="BOA" />
 								<f:selectItem itemLabel="Ótima" itemValue="ÓTIMA" />
 							</p:selectOneRadio>
+						</h:panelGrid>
+
+
+						<h:outputLabel for="trabalhaOnde" value="Está trabalhando:"
+							style="float: right;" />
+						<h:panelGrid columns="4">
+
+							<p:selectBooleanCheckbox id="trabalhaOnde" size="20"
+								value="#{mbInternacaoController.internacao.interno.trabalha}"
+								required="false">
+
+							</p:selectBooleanCheckbox>
+
+							<h:outputLabel for="trabalha" value="Local:"
+								style="float: right; right; width: 50px;  margin-left: 30px" />
+							<h:inputText id="trabalha" size="38"
+								value="#{mbInternacaoController.internacao.interno.trabalhaOnde}"
+								required="false" onkeyup="this.value = this.value.toUpperCase()">
+							</h:inputText>
+
+						</h:panelGrid>
+
+
+						<h:outputLabel for="tempoTrabalhando" value="Tempo de trabalho:"
+							style="float: right;" />
+						<h:panelGrid columns="4">
+
+							<p:inputText id="tempoTrabalhando" size="13"
+								value="#{mbInternacaoController.internacao.interno.tempoTrabalho}"
+								onkeyup="this.value = this.value.toUpperCase()" required="false" />
+
+							<h:outputLabel for="fone05" value="Tempo sem trabalhar:"
+								style="float: right; right; width: 155px;  " />
+							<p:inputText id="fone05" size="13"
+								value="#{mbInternacaoController.internacao.interno.tempoSemTrabalhar}"
+								required="false" onkeyup="this.value = this.value.toUpperCase()" />
+
+						</h:panelGrid>
+
+
+
+
+						<h:outputLabel value="" style="float: right;" />
+						<h:panelGrid columns="3">
+
+							<h:panelGrid columns="2" cellspacing="7">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.problemaSaude}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Problema Saúde"
+									style="float: right; width: 135px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.problemaJustica}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Prob. Justiça"
+									style="float: right; width: 100px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.problemaTrabalhista}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Prob. Trabalho"
+									style="float: right;width: 110px;" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<h:outputLabel for="outrosProblemas" value="Outros Problemas:"
+							style="float: right;" />
+						<p:inputTextarea id="outrosProblemas" cols="50"
+							value="#{mbInternacaoController.internacao.interno.ostrosProblemas}"
+							required="false" />
+
+
+
+
+						<h:outputLabel value="Documentos Entrada" style="float: right;" />
+						<h:panelGrid columns="3">
+
+							<h:panelGrid columns="2" cellspacing="7">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaRG}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="RG" style="float: right; width: 135px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaCPF}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="CPF" style="float: right; width: 100px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaCPT}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="CPT" style="float: right;width: 110px;" />
+							</h:panelGrid>
+
+
+							<h:panelGrid columns="2" cellspacing="7">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaCarteiraVacina}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Cart. Vacinação"
+									style="float: right; width: 135px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaCartaoSUS}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Cartão SUS"
+									style="float: right; width: 100px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaCertNascimento}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Certidão Nasc."
+									style="float: right;width: 110px;" />
+							</h:panelGrid>
+
+
+							<h:panelGrid columns="2" cellspacing="7">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaLaudoMedico}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Passaporte"
+									style="float: right; width: 135px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaLaudoMedico}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="L. Médico"
+									style="float: right; width: 100px;" />
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:selectBooleanCheckbox size="20"
+									value="#{mbInternacaoController.internacao.interno.docEntradaSemDocumentos}">
+								</p:selectBooleanCheckbox>
+								<h:outputLabel value="Sem Doctos"
+									style="float: right;width: 110px;" />
+							</h:panelGrid>
 						</h:panelGrid>
 
 
