@@ -1,7 +1,7 @@
 package br.com.luznovale.logger;
 
 
-import static br.com.luznovale.util.LusnovaleUtil.removerAcentos;
+import static br.com.agsolutio.util.SolutioUtil.removerAcentos;
 
 import java.util.ArrayList;
 import java.util.Date;

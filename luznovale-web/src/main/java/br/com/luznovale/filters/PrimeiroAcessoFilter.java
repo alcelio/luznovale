@@ -15,17 +15,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.luznovale.model.Usuario;
 
+
+
 @javax.servlet.annotation.WebFilter("/restrito/*")
 public class PrimeiroAcessoFilter implements Filter {
-
+	
 	@Override
 	public void destroy() {
 	}
 
+
+
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain arg2)
 			throws IOException, ServletException {
-
+		
 		HttpServletRequest rq = (HttpServletRequest) req;
 		HttpServletResponse res = (HttpServletResponse) resp;
 		String uri = null;
@@ -36,14 +40,12 @@ public class PrimeiroAcessoFilter implements Filter {
 			uri = rq.getRequestURI();
 
 			if (uri.contains("home.jsf")) {
-			
 				Usuario usr = (Usuario) rq.getSession().getAttribute(USUARIO_PRIMEIRO_ACESSO);
 				
 				if (usr != null) {
 					res.sendRedirect(rq.getContextPath() + "/publico/atualizarSenha.jsf");
-					arg2.doFilter(rq, resp);
+					arg2.doFilter(rq, res);
 				}
-
 			}
 
 		} catch (Exception e) {

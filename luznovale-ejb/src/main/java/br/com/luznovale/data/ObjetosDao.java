@@ -14,7 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.jboss.logging.Logger;
 
-import br.com.luznovale.exception.DatabaseException;
+import br.com.agsolutio.exceptions.DatabaseException;
 import br.com.luznovale.model.Objeto;
 import br.com.luznovale.util.CriaCriteria;
 /**

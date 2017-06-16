@@ -62,6 +62,7 @@ public abstract class Pessoa implements Serializable {
 	private Endereco endereco;
 	
 	public Pessoa() {
+		setSexo(new Sexo());
 	}
 
 	public Integer getIdPessoa() {

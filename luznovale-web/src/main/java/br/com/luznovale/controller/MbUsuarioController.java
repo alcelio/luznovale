@@ -1,7 +1,6 @@
 package br.com.luznovale.controller;
 
 import static br.com.luznovale.util.GeraPermissoes.getPermissaoAdmin;
-import static br.com.luznovale.util.GeraPermissoes.getPermissaoSuper;
 import static br.com.luznovale.util.GeraPermissoes.getPermissaoUsuario;
 import static br.com.luznovale.util.LuzNovaleGlobal.PAGINA_HOME;
 import static br.com.luznovale.util.LuzNovaleGlobal.SENHA_PADRAO;
@@ -121,7 +120,7 @@ public class MbUsuarioController implements Serializable {
 			
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Operação não realizada. "+e.getMessage(), ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Operação não realizada.", e.getMessage()));
 			e.printStackTrace();
 		}
 	}
@@ -141,18 +140,10 @@ public class MbUsuarioController implements Serializable {
 		if(getUsuario() == null){
 			throw new Exception("Atenção! Ainda não é permitido efetuar esta atribuição.");
 		}
-		if(getUsuario().getIsAdminUser() && ( getUsuario().getIsUser() || getUsuario().getIsSuperUser()) ){
+		if(getUsuario().getIsAdminUser() && ( getUsuario().getIsUser() ) ){
 			throw new Exception("Atenção! Selecione apenas um tipo de usuário para prosseguir.");
 		}
-		if(getUsuario().getIsSuperUser() && ( getUsuario().getIsUser() || getUsuario().getIsAdminUser()) ){
-			throw new Exception("Atenção! Selecione apenas um tipo de usuário para prosseguir.");
-		}
-		if(getUsuario().getIsUser() && ( getUsuario().getIsSuperUser() || getUsuario().getIsAdminUser()) ){
-			throw new Exception("Atenção! Selecione apenas um tipo de usuário para prosseguir.");
-		}
-		if(!getUsuario().getIsUser() && !getUsuario().getIsAdminUser() && !getUsuario().getIsSuperUser()){
-			throw new Exception("Atenção! É necessário informar o tipo de usuário para prosseguir.");
-		}
+		
 		
 		if(getUsuario().getIsUser()){
 			getUsuario().setPermissoes(getPermissaoUsuario());
@@ -162,9 +153,6 @@ public class MbUsuarioController implements Serializable {
 			getUsuario().setPermissoes(getPermissaoAdmin());
 		}
 		
-		if(getUsuario().getIsSuperUser()){
-			getUsuario().setPermissoes(getPermissaoSuper());
-		}
 	}
 	public String ativar(){
 		if(getUsuario().getIsAtivo()){
@@ -196,7 +184,7 @@ public class MbUsuarioController implements Serializable {
 						new FacesMessage(FacesMessage.SEVERITY_INFO,"Operação realizada com sucesso.", ""));
 				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(USUARIO_PRIMEIRO_ACESSO);
 
-				return goBack();
+				return PAGINA_HOME;
 
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -208,7 +196,7 @@ public class MbUsuarioController implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "As senhas não conferem.", ""));
 			return "";
 		}
-		return goBack();
+		return PAGINA_HOME;
 	}
 
 	

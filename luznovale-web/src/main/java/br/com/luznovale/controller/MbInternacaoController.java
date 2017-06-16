@@ -1,8 +1,8 @@
 package br.com.luznovale.controller;
 
 import static br.com.luznovale.controller.MbLoginController.getUsuarioLogado;
-import static br.com.luznovale.util.IntegerUtil.ONE;
-import static br.com.luznovale.util.IntegerUtil.ZERO;
+import static br.com.agsolutio.util.IntegerUtil.ONE;
+import static br.com.agsolutio.util.IntegerUtil.ZERO;
 import static br.com.luznovale.util.LuzNovaleGlobal.PAGINA_HOME;
 import static br.com.luznovale.util.LuznonaleChaves.PARAM_SYS_INSTIUICAO_PADRAO;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
@@ -19,6 +19,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.agsolutio.exceptions.DatabaseException;
+import br.com.agsolutio.exceptions.ScreenException;
 import br.com.luznovale.data.InstituicaoDao;
 import br.com.luznovale.data.InternacaoDao;
 import br.com.luznovale.data.InternadorDAO;
@@ -26,8 +28,6 @@ import br.com.luznovale.data.InternoDao;
 import br.com.luznovale.data.ObjetosDao;
 import br.com.luznovale.data.ParametrosDao;
 import br.com.luznovale.data.UsuarioDao;
-import br.com.luznovale.exception.DatabaseException;
-import br.com.luznovale.exception.ScreenException;
 import br.com.luznovale.logger.ALogger;
 import br.com.luznovale.model.Droga;
 import br.com.luznovale.model.Internacao;

@@ -15,9 +15,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.agsolutio.exceptions.DatabaseException;
+import br.com.agsolutio.exceptions.ScreenException;
 import br.com.luznovale.data.ObjetosDao;
-import br.com.luznovale.exception.DatabaseException;
-import br.com.luznovale.exception.ScreenException;
 import br.com.luznovale.model.Objeto;
 
 /**

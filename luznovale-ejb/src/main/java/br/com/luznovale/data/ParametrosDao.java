@@ -1,6 +1,6 @@
 package br.com.luznovale.data;
 
-import static br.com.luznovale.util.LusnovaleUtil.stringToBigDecimal;
+import static br.com.agsolutio.util.SolutioUtil.stringToBigDecimal;
 import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 
 import java.io.Serializable;
@@ -18,14 +18,14 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.com.luznovale.exception.DatabaseException;
-import br.com.luznovale.exception.ScreenException;
+import br.com.agsolutio.exceptions.DatabaseException;
+import br.com.agsolutio.exceptions.ScreenException;
+import br.com.agsolutio.util.BigDecimalUtil;
+import br.com.agsolutio.util.IntegerUtil;
+import br.com.agsolutio.util.StringUtil;
 import br.com.luznovale.logger.ALogger;
 import br.com.luznovale.model.ParametrosSistema;
 import br.com.luznovale.model.ParametrosUsuario;
-import br.com.luznovale.util.BigDecimalUtil;
-import br.com.luznovale.util.IntegerUtil;
-import br.com.luznovale.util.StringUtil;
 
 /**
  * Session Bean implementation class UsuarioBeanDao

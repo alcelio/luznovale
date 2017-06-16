@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import br.com.agsolutio.exceptions.ScreenException;
 import br.com.luznovale.data.LogradouroDao;
-import br.com.luznovale.exception.ScreenException;
 import br.com.luznovale.logger.ALogger;
 import br.com.luznovale.model.Logradouro;
 /**

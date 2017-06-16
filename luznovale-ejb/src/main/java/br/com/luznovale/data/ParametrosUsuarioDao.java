@@ -12,7 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.luznovale.exception.DatabaseException;
+import br.com.agsolutio.exceptions.DatabaseException;
 import br.com.luznovale.model.ParametrosUsuario;
 import br.com.luznovale.model.PK.ParametrosUsuarioPK;
 import br.com.luznovale.util.CriaCriteria;

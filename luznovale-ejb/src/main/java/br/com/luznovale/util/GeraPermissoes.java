@@ -20,7 +20,7 @@ public class GeraPermissoes {
 		return permissoes;
 	}
 	
-	public static Set<Permissao> getPermissaoSuper(){
+	public static Set<Permissao> getPermissaoAdmin(){
 		permissoes = new HashSet<Permissao>();
 		Permissao  a = new Permissao();
 		Permissao  u = new Permissao();
@@ -30,13 +30,6 @@ public class GeraPermissoes {
 		permissoes.add(u);
 		return permissoes;
 	}
-	public static Set<Permissao> getPermissaoAdmin(){
-		permissoes = new HashSet<Permissao>();
-		Permissao  a = new Permissao();
-		a.setIdPermissao(admin);
-		permissoes.add(a);
-		return permissoes;
-	}
-	
+
 	
 }
