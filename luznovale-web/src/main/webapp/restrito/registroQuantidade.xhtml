@@ -83,10 +83,10 @@
 							<h:outputText value="Editar" />
 						</f:facet>
 						<div align="center">
-							<p:commandLink process="@this" update="@this"  >
+							<p:commandLink process="@this" update="@this">
 								<p:graphicImage library="imagens" name="edit.png"
 									style="border:0" title="Edita informações do obejeto." />
-									
+
 							</p:commandLink>
 						</div>
 					</p:column>
@@ -115,9 +115,9 @@
 							action="#{mbInternacaoController.adicioNaObjetoListaObjetos()}"
 							title="Adicina Objeto na lista do interno." update="@all">
 							<p:graphicImage library="imagens" name="add.png" width="30px"
-									style="border:0" title="Adiciona objeto do interno."/>
-							<f:setPropertyActionListener target="#{mbInternacaoController.objeto}"
-								value="#{objeto}" />
+								style="border:0" title="Adiciona objeto do interno." />
+							<f:setPropertyActionListener
+								target="#{mbInternacaoController.objeto}" value="#{objeto}" />
 						</p:commandLink>
 					</p:column>
 

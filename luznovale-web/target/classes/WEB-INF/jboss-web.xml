@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <jboss-web>
- <security-domain>java:/jaas/luznovale-security-domain</security-domain>
+	<security-domain>java:/jaas/luznovale-security-domain</security-domain>
 </jboss-web>

@@ -47,8 +47,8 @@
 							<h:outputLabel />
 							<p:panel>
 								<p:commandButton value="Salvar"
-									action="#{mbParametrosSistemaController.salvar()}" icon="ui-icon-disk"
-									update="@form :formtable" />
+									action="#{mbParametrosSistemaController.salvar()}"
+									icon="ui-icon-disk" update="@form :formtable" />
 
 								<p:commandButton value="Voltar" immediate="true"
 									action="#{mbParametrosSistemaController.goBack()}"
@@ -63,8 +63,9 @@
 			<h:form id="formtable">
 				<p:growl id="msg1" />
 				<p:dataTable id="idTabela" var="parametro"
-					value="#{mbParametrosSistemaController.listaParaemtrosSistema}" paginator="true"
-					rows="10" emptyMessage="Nenhum registro encontrado"
+					value="#{mbParametrosSistemaController.listaParaemtrosSistema}"
+					paginator="true" rows="10"
+					emptyMessage="Nenhum registro encontrado"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
@@ -111,7 +112,8 @@
 							<p:commandLink process="@this" update=":tbv1:formDroga">
 								<p:graphicImage library="imagens" name="edit.png"
 									style="border:0" />
-								<f:setPropertyActionListener target="#{mbParametrosSistemaController.parametroSistema}"
+								<f:setPropertyActionListener
+									target="#{mbParametrosSistemaController.parametroSistema}"
 									value="#{parametro}" />
 							</p:commandLink>
 						</div>
@@ -122,12 +124,14 @@
 							<h:outputText value="Excluir" />
 						</f:facet>
 						<div align="center">
-							<p:commandLink action="#{mbParametrosSistemaController.removeParametro()}"
+							<p:commandLink
+								action="#{mbParametrosSistemaController.removeParametro()}"
 								onclick="if (!confirm('Confirma a exclusão do droga #{parametro.descricaoParametro}?')) return false;"
 								update="@form">
 								<p:graphicImage library="imagens" name="trash.png"
 									style="border:0" />
-								<f:setPropertyActionListener target="#{mbParametrosSistemaController.parametroSistema}"
+								<f:setPropertyActionListener
+									target="#{mbParametrosSistemaController.parametroSistema}"
 									value="#{parametro}" />
 							</p:commandLink>
 						</div>

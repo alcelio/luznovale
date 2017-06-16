@@ -1,8 +1,8 @@
 package br.com.luznovale.controller;
 
-import static br.com.luznovale.controller.MbLoginController.getUsuarioLogado;
 import static br.com.agsolutio.util.IntegerUtil.ONE;
 import static br.com.agsolutio.util.IntegerUtil.ZERO;
+import static br.com.luznovale.controller.MbLoginController.getUsuarioLogado;
 import static br.com.luznovale.util.LuzNovaleGlobal.PAGINA_HOME;
 import static br.com.luznovale.util.LuznonaleChaves.PARAM_SYS_INSTIUICAO_PADRAO;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
@@ -222,7 +222,7 @@ public class MbInternacaoController implements Serializable {
 				setSalvouInterno(true);
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do interno gravados com sucesso!.", ""));
-			} catch (DatabaseException e) {
+			} catch (Exception e) {
 				log.error("Erro a tentar salvar dados do interno...");
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Erro ao salvar dados do interno.", e.getMessage()));
@@ -244,7 +244,7 @@ public class MbInternacaoController implements Serializable {
 				if (instituicao != null && instituicao != ZERO) {
 					getInternacao().setInstituicao(daoInstituição.buscaInstituicaoPorId(instituicao));
 				}
-			} catch (DatabaseException e) {
+			} catch (Exception e) {
 				throw new ScreenException("Erro ao obter dados da instituição...");
 			}
 

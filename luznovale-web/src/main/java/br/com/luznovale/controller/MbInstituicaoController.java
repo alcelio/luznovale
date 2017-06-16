@@ -18,8 +18,8 @@ import javax.faces.bean.SessionScoped;
  */
 import javax.faces.context.FacesContext;
 
+import br.com.agsolutio.exceptions.ScreenException;
 import br.com.luznovale.data.InstituicaoDao;
-import br.com.luznovale.exceptions.ScrenException;
 import br.com.luznovale.model.Instituicao;
 
 @ManagedBean
@@ -101,14 +101,10 @@ public class MbInstituicaoController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Operação não realizada, tente novamente.", ""));
 			e.printStackTrace();
-		}catch (ScrenException e1) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro na operação, " + e1.getMessage(),""));
-			e1.printStackTrace();
 		}
 	}
 
-	private void validaObjetosComBox() throws ScrenException {
+	private void validaObjetosComBox() throws ScreenException {
 //		
 //		if(StringUtils.isBlank(getInstituicao().getEndereco().getEstado().getDesEstado()) ){
 //				throw new ScrenException("para prosseguir selecione um Estado.");

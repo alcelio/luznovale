@@ -111,8 +111,7 @@
 					<p:column style="width:45px;text-align: center"
 						headerText="Adicionar"
 						visible="#{mbObjetosController.adicionandoObejtos}">
-						<p:commandLink icon="ui-icon-add"
-							onclick="PF('dlg').show();"
+						<p:commandLink icon="ui-icon-add" onclick="PF('dlg').show();"
 							title="Adicina Objeto na lista do interno.">
 							<p:graphicImage library="imagens" name="add.png" width="30px"
 								style="border:0" title="Adiciona objeto do interno." />
@@ -134,8 +133,7 @@
 								label="qtd" />
 
 							<f:facet name="footer">
-								<p:commandButton 
-									onclick="PF('dlg').hide();" value="Ok"
+								<p:commandButton onclick="PF('dlg').hide();" value="Ok"
 									update="growl"
 									action="#{mbInternacaoController.adicioNaObjetoListaObjetos()}" />
 							</f:facet>

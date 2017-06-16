@@ -16,9 +16,8 @@
 
 			<p:dataTable var="interno" value="#{dtFilterInterno.internos}"
 				widgetVar="internosTable"
-				filteredValue="#{dtFilterInterno.internosFiltrados}" 
-				paginator="true"
-				rows="10"
+				filteredValue="#{dtFilterInterno.internosFiltrados}"
+				paginator="true" rows="10"
 				emptyMessage="Nenhum registro encontrado para os critérios informados"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -80,10 +79,10 @@
 				<p:column style="width:60px;text-align: center"
 					headerText="Carregar">
 					<p:commandButton icon="ui-icon-add"
-						action="/restrito/registrarInternacao.jsf" 
-						title="Carregar dados para Internação"
-						update="@all">
-						<f:setPropertyActionListener target="#{mbInternacaoController.internacao.interno}"
+						action="/restrito/registrarInternacao.jsf"
+						title="Carregar dados para Internação" update="@all">
+						<f:setPropertyActionListener
+							target="#{mbInternacaoController.internacao.interno}"
 							value="#{interno}" />
 					</p:commandButton>
 				</p:column>
@@ -94,8 +93,8 @@
 
 		<p:panel>
 			<p:commandButton value="Voltar" immediate="true" style="float-right"
-				action="#{dtFilterInterno.goBack()}"
-				icon="ui-icon ui-icon-back" update="@all">
+				action="#{dtFilterInterno.goBack()}" icon="ui-icon ui-icon-back"
+				update="@all">
 			</p:commandButton>
 		</p:panel>
 	</ui:define>
