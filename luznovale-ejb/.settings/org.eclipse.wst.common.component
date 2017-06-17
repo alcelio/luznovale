@@ -2,9 +2,11 @@
 	<wb-module deploy-name="luznovale-ejb">
 		<wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
         <dependent-module archiveName="utilidades.jar" deploy-path="/" handle="module:/resource/utilidades/utilidades">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-		<property name="java-output-path" value="/luznovale-ejb/target/classes"/>
+        <property name="java-output-path" value="/luznovale-ejb/target/classes"/>
 	</wb-module>
 </project-modules>

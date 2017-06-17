@@ -2,18 +2,18 @@
 	<wb-module deploy-name="luznovale-ear">
 		<wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
 		<wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-		<dependent-module archiveName="luznovale-web.war" deploy-path="/" handle="module:/resource/luznovale-web/luznovale-web">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
-		<dependent-module archiveName="luznovale-ejb.jar" deploy-path="/" handle="module:/resource/luznovale-ejb/luznovale-ejb">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
-		<dependent-module archiveName="log4j.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
-		<dependent-module archiveName="commons-lang3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-lang3/3.0/commons-lang3-3.0.jar">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
+        <dependent-module archiveName="luznovale-web.war" deploy-path="/" handle="module:/resource/luznovale-web/luznovale-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="luznovale-ejb.jar" deploy-path="/" handle="module:/resource/luznovale-ejb/luznovale-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-lang3/3.0/commons-lang3-3.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="utilidades.jar" deploy-path="/lib" handle="module:/resource/utilidades/utilidades">
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -29,6 +29,7 @@ public class BbCidade implements Serializable {
 	@EJB 
 	CidadeDao dao;
 	
+	@SuppressWarnings("cdi-ambiguous-dependency")
     @Inject
     private Logger log;
 	/**

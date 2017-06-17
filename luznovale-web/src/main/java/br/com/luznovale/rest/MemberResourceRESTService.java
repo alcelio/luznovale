@@ -52,6 +52,7 @@ import br.com.luznovale.service.MemberRegistration;
 @Path("/members")
 @RequestScoped
 public class MemberResourceRESTService {
+	@SuppressWarnings("cdi-ambiguous-dependency")
     @Inject
     private Logger log;
 

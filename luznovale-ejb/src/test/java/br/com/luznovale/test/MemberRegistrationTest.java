@@ -49,6 +49,7 @@ public class MemberRegistrationTest {
     @Inject
     MemberRegistration memberRegistration;
 
+    @SuppressWarnings("cdi-ambiguous-dependency")
     @Inject
     Logger log;
 

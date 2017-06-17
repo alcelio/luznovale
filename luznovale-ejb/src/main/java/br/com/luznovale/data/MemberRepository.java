@@ -13,6 +13,7 @@ import br.com.luznovale.model.Member;
 @ApplicationScoped
 public class MemberRepository {
 
+	@SuppressWarnings("cdi-ambiguous-dependency")
     @Inject
     private EntityManager em;
 
